@@ -14,11 +14,12 @@ struct TUBE
 };
 
 struct time
-	{
-		int hour;
-		int minute;
-		int second;
-	};
+{
+	int hour;
+	int minute;
+	int second;
+};
+
 class NixieDisp
 {
 public:
