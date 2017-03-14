@@ -1,5 +1,6 @@
-#include "../ledxieTube/LedxieTube.cpp"
-#include "Adafruit_NeoPixel.h"
+#include "../ledxieDisplay/Adafruit_NeoPixel.h"
+#include "../ledxieTube/LedxieTube.h"
+
 
 class LedxieDisplay
 {

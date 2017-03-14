@@ -1,14 +1,16 @@
-#include "../ledxieTube/LedxieTube.cpp"
-#include "Adafruit_NeoPixel.h"
+#include "../ledxieDisplay/LedxieDisplay.h"
+#include "../ledxieDisplay/Adafruit_NeoPixel.h"
+#include "../ledxieTube/LedxieTube.h"
 
 #define NUM_LEDS 11
 
 
-class LedxieTube_v1_0 : public LedxieTube
+class LedxieTubev1 : public LedxieTube
 {
 public:
 	// constructor
-	LedxieTube_v1_0();
+	LedxieTubev1();
+	~LedxieTubev1();
 
 	// methods
 	void setTubeRingPosition(int ring_position, int first_pixel_position);
@@ -21,7 +23,7 @@ public:
 
 	void update();
 
-	int getNumberOfLEDS();
+	int getNumberOfLEDs();
 
 private:
 	// objects
@@ -33,8 +35,9 @@ private:
 
 	int current_number_to_display;
 	int previous_number_to_display;
-	int color[3];
-	int black[3];
+
+	int color[3] = {255, 55, 0};
+	int	black[3] = {0, 0, 0};
 	int brightness;
 
 	// methods
