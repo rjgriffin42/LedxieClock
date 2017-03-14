@@ -1,5 +1,6 @@
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include "../ledxieTubeV1/LedxieTubeV1.h"
+//#include "../ledTube/LedTube.h"
 
 
 class LedxieDisplay
@@ -14,7 +15,7 @@ public:
 private:
 	// members;
 	Adafruit_NeoPixel led_strip;
-	LedxieTubeV1* tubes;
+	LedTube* tubes;
 	int number_of_tubes;
 
 	// methods

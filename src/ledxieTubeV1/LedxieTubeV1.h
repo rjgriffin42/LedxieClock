@@ -1,8 +1,9 @@
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
+#include "../ledTube/LedTube.h"
 
 #define NUM_LEDS 11
 
-class LedxieTubeV1
+class LedxieTubeV1 : public LedTube
 {
 public:
 	// constructor
