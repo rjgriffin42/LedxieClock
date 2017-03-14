@@ -1,8 +1,8 @@
 #ifndef LEDXIETUBEV1_H
 #define LEDXIETUBEV1_H
 
-#include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
-#include "../ledTube/LedTube.h"
+#include "../../adafruit_NeoPixel/Adafruit_NeoPixel.h"
+#include "../LedTube.h"
 
 #define NUM_LEDS 11
 
