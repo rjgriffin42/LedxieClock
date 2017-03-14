@@ -1,7 +1,9 @@
+#ifndef LEDXIEDISPLAY_H
+#define LEDXIEDISPLAY_H
+
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include "../ledxieTubeV1/LedxieTubeV1.h"
-//#include "../ledTube/LedTube.h"
-
+#include "../ledTube/LedTube.h"
 
 class LedxieDisplay
 {
@@ -20,3 +22,5 @@ private:
 
 	// methods
 };
+
+#endif // LEDXIEDISPLAY_H

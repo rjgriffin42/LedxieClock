@@ -1,3 +1,6 @@
+#ifndef NIXIEDISP_H
+#define NIXIEDISP_H
+
 #include <Arduino.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,6 +48,7 @@ private:
 	void tubeOff(int tubeNum);
 	void updateTime();
 
-
-
 };
+
+
+#endif // NIXIEDISP_H

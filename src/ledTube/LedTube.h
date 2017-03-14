@@ -1,3 +1,6 @@
+#ifndef LEDTUBE_H
+#define LEDTUBE_H
+
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 
 class LedTube
@@ -21,3 +24,5 @@ public:
 
 private:
 };
+
+#endif // LEDTUBE_H

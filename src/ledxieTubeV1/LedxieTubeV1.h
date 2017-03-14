@@ -1,3 +1,6 @@
+#ifndef LEDXIETUBEV1_H
+#define LEDXIETUBEV1_H
+
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include "../ledTube/LedTube.h"
 
@@ -68,4 +71,4 @@ private:
 };
 */
 
-
+#endif // LEDXIETUBEV1_H

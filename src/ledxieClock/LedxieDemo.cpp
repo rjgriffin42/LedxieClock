@@ -1,3 +1,6 @@
+#ifndef LEDXIEDEMO_H
+#define LEDXIEDEMO_H
+
 #include <Arduino.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,3 +32,5 @@ void loop()
 
 	//nixie->debug();
 }
+
+#endif // LEDXIEDEMO_H
