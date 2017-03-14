@@ -19,22 +19,22 @@
 							<builder buildPath="${workspace_loc:/Led}/Release" id="it.baeyens.arduino.sketch.builder.1315358192" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="it.baeyens.arduino.sketch.builder"/>
 							<tool id="it.baeyens.arduino.tool.sketch.compiler.cpp.302531696" name="Arduino C++ Compiler" superClass="it.baeyens.arduino.tool.sketch.compiler.cpp">
 								<option id="it.baeyens.arduino.compiler.cpp.sketch.option.incpath.2120507698" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LedxieClock/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LedxieClock/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.cpp.sketch.input.485578646" name="CPP source files" superClass="it.baeyens.arduino.compiler.cpp.sketch.input"/>
 							</tool>
 							<tool id="it.baeyens.arduino.tool.compiler.c.1719080093" name="Arduino C Compiler" superClass="it.baeyens.arduino.tool.compiler.c">
 								<option id="it.baeyens.arduino.compiler.c.sketch.option.incpath.1873284319" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LedxieClock/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LedxieClock/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.c.sketch.input.611190329" name="C Source Files" superClass="it.baeyens.arduino.compiler.c.sketch.input"/>
 							</tool>
 							<tool id="it.baeyens.arduino.tool.sketch.compiler.s.1718504433" name="Arduino Assembler" superClass="it.baeyens.arduino.tool.sketch.compiler.s">
 								<option id="it.baeyens.arduino.compiler.asm.sketch.option.incpath.1026740486" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LedxieClock/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/LedxieClock/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.S.sketch.input.1123811083" name="Assembly source files" superClass="it.baeyens.arduino.compiler.S.sketch.input"/>
 							</tool>

@@ -1,5 +1,5 @@
 #include "NixieDisp.h"
-#include "../ledxieDisplay/Adafruit_NeoPixel.h"
+#include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 
 NixieDisp::NixieDisp(int numOfTubes, int pin)
 {

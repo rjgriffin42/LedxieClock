@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "Adafruit_NeoPixel.h"
+#include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include <string.h>
 #include <stdlib.h>
 #include "TimerOne.h"

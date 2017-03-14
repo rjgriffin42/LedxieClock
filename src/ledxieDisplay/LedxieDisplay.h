@@ -1,5 +1,5 @@
-#include "../ledxieDisplay/Adafruit_NeoPixel.h"
-#include "../ledxieTube/LedxieTube.h"
+#include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
+#include "../ledxieTubeV1/LedxieTubeV1.h"
 
 
 class LedxieDisplay
@@ -9,13 +9,13 @@ public:
 
 	// methods
 	void updateTubes();
+	void randomLine(int tShuffle, int tLast);
 
 private:
 	// members;
 	Adafruit_NeoPixel led_strip;
-	LedxieTube* tubes;
+	LedxieTubeV1* tubes;
 	int number_of_tubes;
 
 	// methods
-	void randomLine(int tShuffle, int tLast);
 };

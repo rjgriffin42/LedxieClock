@@ -1,14 +1,12 @@
 #include "LedxieDisplay.h"
 
-#include "../ledxieTubev1/LedxieTubev1.h"
-
 LedxieDisplay::LedxieDisplay(int number_of_tubes, int pin_number)
 {
 	this->number_of_tubes = number_of_tubes;
 	int number_of_pixels = 0;
 
 	// create each tube and assign it positions
-	tubes = new LedxieTubev1[number_of_tubes];
+	tubes = new LedxieTubeV1[number_of_tubes];
 	for (int tube_index; tube_index < number_of_tubes; tube_index++)
 	{
 		tubes[tube_index].setTubeRingPosition(tube_index, number_of_pixels);
@@ -39,7 +37,7 @@ void LedxieDisplay::randomLine(int tShuffle, int tLast)
 		for (int tube_index = 0; tube_index < number_of_tubes; tube_index++)
 		{
 			randomNum = random(10);
-			while (tubes[tube_index].getCurrentDisplayedNumber() == randomNum)
+			while (tubes[tube_index].getCurrentlyDisplayedNumber() == randomNum)
 			{
 				randomNum = random(10);
 			}
@@ -78,7 +76,7 @@ void LedxieDisplay::randomLine(int tShuffle, int tLast)
 				{
 					randomNum = random(10);
 
-					while (tubes[tube_index].getCurrentDisplayedNumber() == randomNum)
+					while (tubes[tube_index].getCurrentlyDisplayedNumber() == randomNum)
 					{
 						randomNum = random(10);
 					}

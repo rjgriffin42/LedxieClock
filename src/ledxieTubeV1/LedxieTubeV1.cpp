@@ -1,6 +1,6 @@
-#include "../ledxieTubev1/LedxieTubev1.h"
+#include "LedxieTubeV1.h"
 
-LedxieTubev1::LedxieTubev1()
+LedxieTubeV1::LedxieTubeV1()
 {
 	ring_position = 0;
 	first_pixel_position = 0;
@@ -11,23 +11,23 @@ LedxieTubev1::LedxieTubev1()
 	previous_number_to_display = NUM_LEDS;
 }
 
-LedxieTubev1::~LedxieTubev1()
+LedxieTubeV1::~LedxieTubeV1()
 {
 //todo
 }
 
-void LedxieTubev1::setTubeRingPosition(int ring_position, int first_pixel_position)
+void LedxieTubeV1::setTubeRingPosition(int ring_position, int first_pixel_position)
 {
 	this->ring_position = ring_position;
 	this->first_pixel_position = first_pixel_position;
 }
 
-void LedxieTubev1::setLEDStrip(Adafruit_NeoPixel led_strip)
+void LedxieTubeV1::setLEDStrip(Adafruit_NeoPixel led_strip)
 {
 	this->led_strip = led_strip;
 }
 
-void LedxieTubev1::setNumberToDisplay(int number_to_display)
+void LedxieTubeV1::setNumberToDisplay(int number_to_display)
 {
 	previous_number_to_display = current_number_to_display;
 	if (number_to_display < NUM_LEDS && number_to_display >= 0)
@@ -36,7 +36,7 @@ void LedxieTubev1::setNumberToDisplay(int number_to_display)
 	}
 }
 
-void LedxieTubev1::setColorToDisplay(int color[3])
+void LedxieTubeV1::setColorToDisplay(int color[3])
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -44,18 +44,18 @@ void LedxieTubev1::setColorToDisplay(int color[3])
 	}
 }
 
-void LedxieTubev1::setDisplayBrightness(int brightness)
+void LedxieTubeV1::setDisplayBrightness(int brightness)
 {
 	this->brightness = brightness;
 }
 
-void LedxieTubev1::update()
+void LedxieTubeV1::update()
 {
     turnNumberOn(current_number_to_display, color);
     turnNumberOff(previous_number_to_display);
 }
 
-void LedxieTubev1::turnNumberOn(int number, int color[3])
+void LedxieTubeV1::turnNumberOn(int number, int color[3])
 {
 	if (number < NUM_LEDS && number >= 0)
 	{
@@ -64,7 +64,7 @@ void LedxieTubev1::turnNumberOn(int number, int color[3])
 	}
 }
 
-void LedxieTubev1::turnNumberOff(int number)
+void LedxieTubeV1::turnNumberOff(int number)
 {
 	if (number < NUM_LEDS && number >= 0)
 	{
@@ -73,7 +73,7 @@ void LedxieTubev1::turnNumberOff(int number)
 	}
 }
 
-void LedxieTubev1::tubeOff()
+void LedxieTubeV1::tubeOff()
 {
 	for (int led_index = 0; led_index < NUM_LEDS; led_index++)
 	{
@@ -81,7 +81,12 @@ void LedxieTubev1::tubeOff()
 	}
 }
 
-int LedxieTubev1::getNumberOfLEDs()
+int LedxieTubeV1::getNumberOfLEDs()
 {
 	return NUM_LEDS;
+}
+
+int LedxieTubeV1::getCurrentlyDisplayedNumber()
+{
+	return current_number_to_display;
 }

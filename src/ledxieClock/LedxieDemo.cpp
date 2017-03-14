@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "Adafruit_NeoPixel.h"
+#include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include "NixieDisp.h"
+#include "../ledxieDisplay/LedxieDisplay.h"
 
 #define CLOCK_PRESCALER_1   (0x0)
 
