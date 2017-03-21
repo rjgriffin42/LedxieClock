@@ -17,7 +17,6 @@ class NewNixieDisp
 public:
 	NewNixieDisp(int numOfTubes, int pin);
 	void randomLine(int tShuffle, int tLast);
-	void debug();
 	String getCurrent() const ;
 
 private:
@@ -29,7 +28,6 @@ private:
 	NewTube* tubes;
 
 	//functions
-	void setTubeValue(int tubeNum, int digit);
 	void updateTubes();
 	void tubeOff(int tubeNum);
 
