@@ -10,7 +10,7 @@ public:
 	virtual ~LedTube(void) {};
 
 	virtual void setTubeRingPosition(int ring_position, int first_pixel_position) = 0;
-	virtual void setLEDStrip(Adafruit_NeoPixel led_strip) = 0;
+	virtual void setLEDStrip(Adafruit_NeoPixel& led_strip) = 0;
 
 	virtual void setNumberToDisplay(int number) = 0;
 	virtual void setColorToDisplay(int color[3]) = 0;
@@ -21,8 +21,8 @@ public:
 
 	virtual int getNumberOfLEDs() = 0;
 	virtual int getCurrentlyDisplayedNumber() = 0;
-
 private:
 };
 
 #endif // LEDTUBE_H
+

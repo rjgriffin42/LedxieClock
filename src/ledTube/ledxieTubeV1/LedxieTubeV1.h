@@ -15,7 +15,7 @@ public:
 
 	// methods
 	void setTubeRingPosition(int ring_position, int first_pixel_position);
-	void setLEDStrip(Adafruit_NeoPixel led_strip);
+	void setLEDStrip(Adafruit_NeoPixel& led_strip);
 
 	void setNumberToDisplay(int number);
 	void setColorToDisplay(int color[3]);

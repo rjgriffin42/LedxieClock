@@ -22,7 +22,7 @@ void LedxieTubeV1::setTubeRingPosition(int ring_position, int first_pixel_positi
 	this->first_pixel_position = first_pixel_position;
 }
 
-void LedxieTubeV1::setLEDStrip(Adafruit_NeoPixel led_strip)
+void LedxieTubeV1::setLEDStrip(Adafruit_NeoPixel& led_strip)
 {
 	this->led_strip = led_strip;
 }
