@@ -9,6 +9,8 @@ NewNixieDisp::NewNixieDisp(int numOfTubes, int pin)
 	{
 		tubes[i].setPreviousValue(tubes[i].getValue());
 		tubes[i].setCurrentValue(12);
+		tubes[i].setRingPosition(i);
+		tubes[i].setLEDStrip(pixels);
 	}
 	//initialize pixels
 	pixels = Adafruit_NeoPixel(NUMPIXELS, 6, NEO_GRB + NEO_KHZ800);
@@ -90,22 +92,16 @@ void NewNixieDisp::randomLine(int tShuffle, int tLast)
 
 void NewNixieDisp::updateTubes()
 {
-	//turn on new numbers
 	for (int i = 0; i < tubeNum; i++)
 	{
-		if(tubes[i].getValue() < 11)
-		{
-			pixels.setPixelColor(LED[tubes[i].getValue()] + (11 * i), pixels.Color(255, 55, 0));
-		}
+		tubes[i].turnOnNewNumber();
 	}
 	pixels.show();
 	delay(5);
 	//turn off old numbers
 	for (int i = 0; i < tubeNum; i++)
 	{
-		if(tubes[i].getPreviousValue() != tubes[i].getValue())
-		pixels.setPixelColor(LED[tubes[i].getPreviousValue()] + (11 * i), pixels.Color(0, 0, 0));
-
+		tubes[i].turnOffOldNumber();
 	}
 	pixels.show();
 	delay(10);
