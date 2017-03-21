@@ -15,7 +15,6 @@ RandomLineDisplay::RandomLineDisplay(int numOfTubes, int pin)
 		number_of_pixels += tubes[i].getNumberOfLEDs();
 	}
 
-
 	pixels = Adafruit_NeoPixel(number_of_pixels, pin, NEO_GRB + NEO_KHZ800);
 	pixels.begin();
 }

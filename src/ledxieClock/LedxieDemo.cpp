@@ -8,24 +8,28 @@
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include "NixieDisp.h"
 #include "../ledxieDisplay/RandomLineDisplay.h"
+#include "../ledxieDisplay/ClockDisplay.h"
 
 #define CLOCK_PRESCALER_1   (0x0)
 
 #define PIN_NUMBER 6
 #define NUMBER_OF_TUBES 8
-RandomLineDisplay *display;
+//RandomLineDisplay *display;
+ClockDisplay *display;
 
 void setup()
 {
-	display = new RandomLineDisplay(NUMBER_OF_TUBES, PIN_NUMBER);
+	//display = new RandomLineDisplay(NUMBER_OF_TUBES, PIN_NUMBER);
+	display = new ClockDisplay();
 	Serial.begin(115200);
 	Serial.println("--- Start Serial Monitor SEND_RCVE ---");
 }
 
 void loop()
 {
-	display->randomLine(1000, 1000 * 10);
-	//ledxie->randomLine(1000, 1000 * 10);
+	display->update();
+	//display->randomLine(1000, 1000 * 10);
+
 	//Serial.println(display->getCurrent());
 
 }
