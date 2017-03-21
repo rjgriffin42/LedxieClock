@@ -1,18 +1,18 @@
-#include "NewNixieDisp.h"
+#include "RandomLineDisplay.h"
 
-NewNixieDisp::NewNixieDisp(int numOfTubes, int pin)
+RandomLineDisplay::RandomLineDisplay(int numOfTubes, int pin)
 {
 	tubeNum = numOfTubes;
 	int number_of_pixels = 0;
 
-	tubes = new NewTube[numOfTubes];
+	tubes = new LedxieTubeV1[numOfTubes];
 	for (int i = 0; i < tubeNum; i++)
 	{
 		tubes[i].setNumberToDisplay(12);
 		tubes[i].setTubeRingPosition(i);
 		tubes[i].setLEDStrip(pixels);
 
-		number_of_pixels += tubes[i].getNumberOfLEDS();
+		number_of_pixels += tubes[i].getNumberOfLEDs();
 	}
 
 
@@ -21,7 +21,7 @@ NewNixieDisp::NewNixieDisp(int numOfTubes, int pin)
 }
 
 
-void NewNixieDisp::randomLine(int tShuffle, int tLast)
+void RandomLineDisplay::randomLine(int tShuffle, int tLast)
 {
 	int dim = 255;
 
@@ -95,7 +95,7 @@ void NewNixieDisp::randomLine(int tShuffle, int tLast)
 	delay(tLast);
 }
 
-void NewNixieDisp::updateTubes()
+void RandomLineDisplay::updateTubes()
 {
 	for (int i = 0; i < tubeNum; i++)
 	{
@@ -104,7 +104,7 @@ void NewNixieDisp::updateTubes()
 	delay(10);
 }
 
-String NewNixieDisp::getCurrent() const
+String RandomLineDisplay::getCurrent() const
 {
 
 	String output = "";

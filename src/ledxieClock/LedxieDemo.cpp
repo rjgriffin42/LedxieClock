@@ -7,31 +7,27 @@
 #include <ctype.h>
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include "NixieDisp.h"
-#include "NewNixieDisp.h"
-#include "../ledxieDisplay/LedxieDisplay.h"
+#include "../ledxieDisplay/RandomLineDisplay.h"
 
 #define CLOCK_PRESCALER_1   (0x0)
 
 #define PIN_NUMBER 6
 #define NUMBER_OF_TUBES 8
-NewNixieDisp *nixie;
-//LedxieDisplay *ledxie;
+RandomLineDisplay *display;
 
 void setup()
 {
-	nixie = new NewNixieDisp(8, 6);
-	//ledxie = new LedxieDisplay(NUMBER_OF_TUBES, PIN_NUMBER);
+	display = new RandomLineDisplay(NUMBER_OF_TUBES, PIN_NUMBER);
 	Serial.begin(115200);
 	Serial.println("--- Start Serial Monitor SEND_RCVE ---");
 }
 
 void loop()
 {
-	nixie->randomLine(1000, 1000 * 10);
+	display->randomLine(1000, 1000 * 10);
 	//ledxie->randomLine(1000, 1000 * 10);
-	//Serial.println(nixie->getCurrent());
+	//Serial.println(display->getCurrent());
 
-	//nixie->debug();
 }
 
 #endif // LEDXIEDEMO_H

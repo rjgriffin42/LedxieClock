@@ -1,39 +1,33 @@
+/*
+ * LedxieTubeV1.cpp
+ *
+ *  Created on: Mar 20, 2017
+ *      Author: shadylady
+ */
+
 #include "LedxieTubeV1.h"
 
 LedxieTubeV1::LedxieTubeV1()
 {
-	ring_position = 0;
-	first_pixel_position = 0;
-
-	brightness = 255;
-
-	current_number_to_display = NUM_LEDS;
-	previous_number_to_display = NUM_LEDS;
 }
 
 LedxieTubeV1::~LedxieTubeV1()
 {
-//todo
 }
 
-void LedxieTubeV1::setTubeRingPosition(int ring_position, int first_pixel_position)
+void LedxieTubeV1::setTubeRingPosition(int ring_position)
 {
 	this->ring_position = ring_position;
-	this->first_pixel_position = first_pixel_position;
 }
 
 void LedxieTubeV1::setLEDStrip(Adafruit_NeoPixel& led_strip)
 {
-	this->led_strip = led_strip;
+	this->led_strip = &led_strip;
 }
 
-void LedxieTubeV1::setNumberToDisplay(int number_to_display)
+void LedxieTubeV1::setDisplayBrightness(int brightness)
 {
-	previous_number_to_display = current_number_to_display;
-	if (number_to_display < NUM_LEDS && number_to_display >= 0)
-	{
-		current_number_to_display = number_to_display;
-	}
+	this->brightness = brightness;
 }
 
 void LedxieTubeV1::setColorToDisplay(int color[3])
@@ -44,41 +38,25 @@ void LedxieTubeV1::setColorToDisplay(int color[3])
 	}
 }
 
-void LedxieTubeV1::setDisplayBrightness(int brightness)
+void LedxieTubeV1::setNumberToDisplay(int value)
 {
-	this->brightness = brightness;
+	setPreviousValue(getNumberToDisplay());
+	setCurrentValue(value);
 }
 
-void LedxieTubeV1::update()
+void LedxieTubeV1::setCurrentValue(int value)
 {
-    turnNumberOn(current_number_to_display, color);
-    turnNumberOff(previous_number_to_display);
+	currentValue = value;
 }
 
-void LedxieTubeV1::turnNumberOn(int number, int color[3])
+void LedxieTubeV1::setPreviousValue(int value)
 {
-	if (number < NUM_LEDS && number >= 0)
-	{
-		int pixel_number = led_mapping[number] + first_pixel_position;
-		led_strip.setPixelColor(pixel_number, led_strip.Color(color[0], color[1], color[2]));
-	}
+	previousValue = value;
 }
 
-void LedxieTubeV1::turnNumberOff(int number)
+int LedxieTubeV1::getNumberToDisplay()
 {
-	if (number < NUM_LEDS && number >= 0)
-	{
-		int pixel_number = led_mapping[number] + first_pixel_position;
-		led_strip.setPixelColor(pixel_number, led_strip.Color(black[0], black[1], black[2]));
-	}
-}
-
-void LedxieTubeV1::tubeOff()
-{
-	for (int led_index = 0; led_index < NUM_LEDS; led_index++)
-	{
-		turnNumberOff(led_index);
-	}
+	return currentValue;
 }
 
 int LedxieTubeV1::getNumberOfLEDs()
@@ -86,7 +64,36 @@ int LedxieTubeV1::getNumberOfLEDs()
 	return NUM_LEDS;
 }
 
-int LedxieTubeV1::getCurrentlyDisplayedNumber()
+void LedxieTubeV1::turnOff()
 {
-	return current_number_to_display;
+	for (int led_index = 0; led_index < NUM_LEDS; led_index++)
+	{
+		led_strip->setPixelColor(led_index + (NUM_LEDS * ring_position), led_strip->Color(0, 0, 0));
+	}
+}
+
+void LedxieTubeV1::turnOnNewNumber()
+{
+	if(getNumberToDisplay() < 11)
+	{
+		led_strip->setPixelColor(LED[currentValue] + (NUM_LEDS * ring_position), led_strip->Color(color[0], color[1], color[2]));
+	}
+}
+
+void LedxieTubeV1::turnOffOldNumber()
+{
+	if(previousValue != currentValue)
+		led_strip->setPixelColor(LED[previousValue] + (NUM_LEDS * ring_position), led_strip->Color(0, 0, 0));
+}
+
+void LedxieTubeV1::update()
+{
+	led_strip->setBrightness(brightness);
+	led_strip->show();
+
+	turnOnNewNumber();
+	led_strip->show();
+
+	turnOffOldNumber();
+	led_strip->show();
 }
