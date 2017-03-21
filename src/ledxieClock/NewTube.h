@@ -2,38 +2,34 @@
  * NewTube.h
  *
  *  Created on: Mar 20, 2017
- *      Author: shadylady
+ *      Author: Robert Griffin
  */
+
+#ifndef NEWTUBE_H_
+#define NEWTUBE_H_
 
 #include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 
-#ifndef SRC_LEDXIECLOCK_NEWTUBE_H_
-#define SRC_LEDXIECLOCK_NEWTUBE_H_
+#define NUM_LEDS 11
 
 class NewTube {
 public:
 	NewTube();
 	virtual ~NewTube();
 
-	void setValue(int value);
-	void setCurrentValue(int value);
-	void setPreviousValue(int value);
+	void setNumberToDisplay(int value);
+	void setColorToDisplay(int color[3]);
 
-	int getValue();
-	int getPreviousValue();
+	void setDisplayBrightness(int brightness);
 
-	void setRingPosition(int ring_position);
+	int getNumberToDisplay();
+	int getNumberOfLEDS();
+
+	void setTubeRingPosition(int ring_position);
 	void setLEDStrip(Adafruit_NeoPixel& led_strip);
 
-	void turnOnNewNumber();
-	void turnOffOldNumber();
-	void turnOnNewNumber(Adafruit_NeoPixel& led_strip);
-	void turnOffOldNumber(Adafruit_NeoPixel& led_strip);
-	void turnOnNewNumber(int ring_position, Adafruit_NeoPixel& led_strip);
-	void turnOffOldNumber(int ring_position, Adafruit_NeoPixel& led_strip);
-
-	int currentValue;
-	int previousValue;
+	void turnOff();
+	void update();
 
 
 private:
@@ -42,6 +38,18 @@ private:
 
 	int ring_position;
 	Adafruit_NeoPixel* led_strip;
+
+	int currentValue;
+	int previousValue;
+
+	int color[3] = {255, 55, 0};
+	int brightness = 255;
+
+	void setCurrentValue(int value);
+	void setPreviousValue(int value);
+
+	void turnOnNewNumber();
+	void turnOffOldNumber();
 };
 
-#endif /* SRC_LEDXIECLOCK_NEWTUBE_H_ */
+#endif /* NEWTUBE_H_ */

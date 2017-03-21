@@ -21,7 +21,6 @@ public:
 
 private:
 	//variables
-	int NUMPIXELS;
 	int tubeNum;
 	int LED[11] = {2, 3, 4, 9, 1, 6, 0, 7, 5, 10, 8};//LED mapping
 	Adafruit_NeoPixel pixels;
@@ -29,8 +28,6 @@ private:
 
 	//functions
 	void updateTubes();
-	void tubeOff(int tubeNum);
-
 };
 
 

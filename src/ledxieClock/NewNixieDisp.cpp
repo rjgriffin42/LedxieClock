@@ -3,18 +3,20 @@
 NewNixieDisp::NewNixieDisp(int numOfTubes, int pin)
 {
 	tubeNum = numOfTubes;
-	NUMPIXELS = tubeNum * 11;
+	int number_of_pixels = 0;
+
 	tubes = new NewTube[numOfTubes];
 	for (int i = 0; i < tubeNum; i++)
 	{
-		tubes[i].setPreviousValue(tubes[i].getValue());
-		tubes[i].setCurrentValue(12);
-		tubes[i].setRingPosition(i);
+		tubes[i].setNumberToDisplay(12);
+		tubes[i].setTubeRingPosition(i);
 		tubes[i].setLEDStrip(pixels);
+
+		number_of_pixels += tubes[i].getNumberOfLEDS();
 	}
-	//initialize pixels
-	pixels = Adafruit_NeoPixel(NUMPIXELS, 6, NEO_GRB + NEO_KHZ800);
-	//start the pixel;
+
+
+	pixels = Adafruit_NeoPixel(number_of_pixels, pin, NEO_GRB + NEO_KHZ800);
 	pixels.begin();
 }
 
@@ -22,8 +24,11 @@ NewNixieDisp::NewNixieDisp(int numOfTubes, int pin)
 void NewNixieDisp::randomLine(int tShuffle, int tLast)
 {
 	int dim = 255;
-	pixels.setBrightness(dim);
-	pixels.show();
+
+	for (int i = 0; i < tubeNum; i++)
+	{
+		tubes[i].setDisplayBrightness(dim);
+	}
 	updateTubes();
 
 	//shuffle random numbers
@@ -38,18 +43,18 @@ void NewNixieDisp::randomLine(int tShuffle, int tLast)
 		for (int i = 0; i < tubeNum; i++)
 		{
 			randomNum = random(10);
-			while (tubes[i].getValue() == randomNum)
+			while (tubes[i].getNumberToDisplay() == randomNum)
 			{
 				randomNum = random(10);
 			}
-			tubes[i].setValue(randomNum);
+			tubes[i].setNumberToDisplay(randomNum);
 		}
 		updateTubes();
 
 	}
 
 	//fix decimal dot
-	tubes[6].setValue(10);
+	tubes[6].setNumberToDisplay(10);
 	updateTubes();
 
 	//generate random stop number
@@ -61,8 +66,8 @@ void NewNixieDisp::randomLine(int tShuffle, int tLast)
 		list[a] = list[r];
 		list[r] = temp;
 	}
-	//stop according to random order
 
+	//stop according to random order
 	for(int i = 0; i < tubeNum; i ++)
 	{
 		tStart = millis();
@@ -76,11 +81,11 @@ void NewNixieDisp::randomLine(int tShuffle, int tLast)
 				if(list[j] >= 0)
 				{
 					randomNum = random(10);
-					while (tubes[i].getValue() == randomNum)
+					while (tubes[i].getNumberToDisplay() == randomNum)
 					{
 						randomNum = random(10);
 					}
-					tubes[list[j]].setValue(randomNum);
+					tubes[list[j]].setNumberToDisplay(randomNum);
 				}
 			}
 			updateTubes();
@@ -94,25 +99,9 @@ void NewNixieDisp::updateTubes()
 {
 	for (int i = 0; i < tubeNum; i++)
 	{
-		tubes[i].turnOnNewNumber();
+		tubes[i].update();
 	}
-	pixels.show();
-	delay(5);
-	//turn off old numbers
-	for (int i = 0; i < tubeNum; i++)
-	{
-		tubes[i].turnOffOldNumber();
-	}
-	pixels.show();
 	delay(10);
-}
-
-void NewNixieDisp::tubeOff(int tubeNum)
-{
-	for (int i = 0; i < 11; i++)
-	{
-		pixels.setPixelColor(i + (11 * tubeNum), pixels.Color(0, 0, 0));
-	}
 }
 
 String NewNixieDisp::getCurrent() const
@@ -121,7 +110,7 @@ String NewNixieDisp::getCurrent() const
 	String output = "";
 	for (int i = tubeNum - 1; i >= 0; i--)
 	{
-		int thisNum = tubes[i].getValue();
+		int thisNum = tubes[i].getNumberToDisplay();
 		output = output + " | " + String(thisNum);
 	}
 	return output;

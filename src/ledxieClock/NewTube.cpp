@@ -15,9 +15,32 @@ NewTube::~NewTube()
 {
 }
 
-void NewTube::setValue(int value)
+void NewTube::setTubeRingPosition(int ring_position)
 {
-	setPreviousValue(getValue());
+	this->ring_position = ring_position;
+}
+
+void NewTube::setLEDStrip(Adafruit_NeoPixel& led_strip)
+{
+	this->led_strip = &led_strip;
+}
+
+void NewTube::setDisplayBrightness(int brightness)
+{
+	this->brightness = brightness;
+}
+
+void NewTube::setColorToDisplay(int color[3])
+{
+	for (int i = 0; i < 3; i++)
+	{
+		this->color[i] = color[i];
+	}
+}
+
+void NewTube::setNumberToDisplay(int value)
+{
+	setPreviousValue(getNumberToDisplay());
 	setCurrentValue(value);
 }
 
@@ -31,56 +54,46 @@ void NewTube::setPreviousValue(int value)
 	previousValue = value;
 }
 
-int NewTube::getValue()
+int NewTube::getNumberToDisplay()
 {
 	return currentValue;
 }
 
-int NewTube::getPreviousValue()
+int NewTube::getNumberOfLEDS()
 {
-	return previousValue;
+	return NUM_LEDS;
 }
 
-void NewTube::setRingPosition(int ring_position)
+void NewTube::turnOff()
 {
-	this->ring_position = ring_position;
-}
-
-void NewTube::setLEDStrip(Adafruit_NeoPixel& led_strip)
-{
-	this->led_strip = &led_strip;
+	for (int led_index = 0; led_index < NUM_LEDS; led_index++)
+	{
+		led_strip->setPixelColor(led_index + (NUM_LEDS * ring_position), led_strip->Color(0, 0, 0));
+	}
 }
 
 void NewTube::turnOnNewNumber()
 {
-	turnOnNewNumber(*led_strip);
+	if(getNumberToDisplay() < 11)
+	{
+		led_strip->setPixelColor(LED[currentValue] + (NUM_LEDS * ring_position), led_strip->Color(color[0], color[1], color[2]));
+	}
 }
 
 void NewTube::turnOffOldNumber()
 {
-	turnOffOldNumber(*led_strip);
+	if(previousValue != currentValue)
+		led_strip->setPixelColor(LED[previousValue] + (NUM_LEDS * ring_position), led_strip->Color(0, 0, 0));
 }
 
-void NewTube::turnOnNewNumber(Adafruit_NeoPixel& led_strip)
+void NewTube::update()
 {
-	turnOnNewNumber(ring_position, led_strip);
-}
+	led_strip->setBrightness(brightness);
+	led_strip->show();
 
-void NewTube::turnOffOldNumber(Adafruit_NeoPixel& led_strip)
-{
-	turnOffOldNumber(ring_position, led_strip);
-}
+	turnOnNewNumber();
+	led_strip->show();
 
-void NewTube::turnOnNewNumber(int ring_position, Adafruit_NeoPixel& led_strip)
-{
-	if(getValue() < 11)
-	{
-		led_strip.setPixelColor(LED[getValue()] + (11 * ring_position), led_strip.Color(255, 55, 0));
-	}
-}
-
-void NewTube::turnOffOldNumber(int ring_position, Adafruit_NeoPixel& led_strip)
-{
-	if(getPreviousValue() != getValue())
-		led_strip.setPixelColor(LED[getPreviousValue()] + (11 * ring_position), led_strip.Color(0, 0, 0));
+	turnOffOldNumber();
+	led_strip->show();
 }
