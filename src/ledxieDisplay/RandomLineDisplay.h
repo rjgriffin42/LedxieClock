@@ -16,6 +16,8 @@ class RandomLineDisplay
 public:
 	RandomLineDisplay(int numOfTubes, int pin);
 	void randomLine(int tShuffle, int tLast);
+	void randomLineAlt(int tShuffle, int tLast);
+	void randomLineAltAlt(int tShuffle, int tLast);
 	String getCurrent() const ;
 
 private:
@@ -24,8 +26,14 @@ private:
 	Adafruit_NeoPixel pixels;
 	LedTube* tubes;
 
+	LedDisplayArray ledDisplay;
+
+	int brightness[];
+	int value[];
+
 	//functions
 	void updateTubes();
+	void updateTubes(int brightness[], int value[]);
 };
 
 

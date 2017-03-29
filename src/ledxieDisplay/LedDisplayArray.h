@@ -9,13 +9,18 @@ class LedDisplayArray
 {
 public:
 	LedDisplayArray(int numOfTubes, int pin);
+	~LedDisplayArray();
+
+	void setDisplayBrightness(int brightness);
+	void setTubeColors(int color[][3]);
+	void setTubeColor(int tubeNumber, int color[3]);
 	void updateValues(int values[]);
 
 private:
 	//variables
 	int number_of_tubes;
 	int brightness = 255;
-	int color[3] = {255, 255, 0};
+	int color[][];
 	Adafruit_NeoPixel pixels;
 	LedTube* tubes;
 };
