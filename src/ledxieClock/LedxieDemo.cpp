@@ -16,15 +16,15 @@
 
 #define PIN_NUMBER 6
 #define NUMBER_OF_TUBES 8
-RandomLineDisplay *display;
-//ClockDisplay *display;
+//RandomLineDisplay *display;
+ClockDisplay *display;
 //LedDisplayArray *displayArray;
 int number_of_pixels;
 
 void setup()
 {
-	display = new RandomLineDisplay(NUMBER_OF_TUBES, PIN_NUMBER);
-	//display = new ClockDisplay();
+	//display = new RandomLineDisplay(NUMBER_OF_TUBES, PIN_NUMBER);
+	display = new ClockDisplay();
 	Serial.begin(115200);
 	Serial.println("--- Start Serial Monitor SEND_RCVE ---");
 
@@ -34,19 +34,21 @@ void setup()
 
 void loop()
 {
+	/*
 	int values[8];
 	for (int i = 0; i < 8; i++)
 	{
 	   values[i] = 6;
 	}
+	*/
 
 	//displayArray->updateValues(values);
 
 
 	//display->updateValues(values);
-	//display->update();
+	display->update();
 
-	display->randomLine(1000, 1000 * 10);
+	//display->randomLine(1000, 1000 * 10);
 
 	Serial.println("what");
 	Serial.println(3);

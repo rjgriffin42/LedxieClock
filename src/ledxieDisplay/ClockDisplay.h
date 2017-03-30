@@ -8,7 +8,9 @@
 #ifndef CLOCKDISPLAY_H_
 #define CLOCKDISPLAY_H_
 
+#include <Wire.h>
 #include "LedDisplayArray.h"
+#include "../realTimeClock/RTClib.h"
 
 #define DISPLAY_SIZE 8
 #define DISPLAY_PIN_NUMBER 6
@@ -19,10 +21,14 @@ public:
 	ClockDisplay();
 	virtual ~ClockDisplay();
 
+	void initialize();
 	void update();
 private:
 	int values[8] = {1, 2, 3, 4, 5, 6, 7, 8};
-	LedDisplayArray ledDisplayArray = LedDisplayArray(DISPLAY_SIZE, DISPLAY_PIN_NUMBER);
+	LedDisplayArray *ledDisplayArray;
+	RTC_DS3231 realtimeClock;
+
+	void computeDisplaySignal(int hour, int minute, int second);
 };
 
-#endif /* SRC_LEDXIEDISPLAY_CLOCKDISPLAY_H_ */
+#endif /* CLOCKDISPLAY_H_ */

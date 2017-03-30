@@ -21,6 +21,8 @@
 								<option id="it.baeyens.arduino.compiler.cpp.sketch.option.incpath.2120507698" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.cpp.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/libraries/Wire}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/libraries/Wire/src}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.cpp.sketch.input.485578646" name="CPP source files" superClass="it.baeyens.arduino.compiler.cpp.sketch.input"/>
 							</tool>
@@ -28,6 +30,8 @@
 								<option id="it.baeyens.arduino.compiler.c.sketch.option.incpath.1873284319" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.c.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/libraries/Wire}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/libraries/Wire/src}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.c.sketch.input.611190329" name="C Source Files" superClass="it.baeyens.arduino.compiler.c.sketch.input"/>
 							</tool>
@@ -36,6 +40,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="/Users/shadylady/Downloads/avr-stl/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/libraries/Wire}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/libraries/Wire/src}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.S.sketch.input.1123811083" name="Assembly source files" superClass="it.baeyens.arduino.compiler.S.sketch.input"/>
 							</tool>
