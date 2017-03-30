@@ -34,10 +34,15 @@ void ClockDisplay::initialize()
 		// set it to 12AM on January 1st, 2001
 		//realtimeClock.adjust(DateTime(2001, 1, 1, 12, 0, 0));
 	}
+
+	firstTick = false;
 }
 
 void ClockDisplay::update()
 {
+	if (firstTick)
+		initialize();
+
 	DateTime now = realtimeClock.now();
 
 	int hour = now.hour();

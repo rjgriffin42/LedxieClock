@@ -27,6 +27,7 @@ private:
 	int values[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 	LedDisplayArray *ledDisplayArray;
 	RTC_DS3231 realtimeClock;
+	bool firstTick = true;
 
 	void computeDisplaySignal(int hour, int minute, int second);
 };
