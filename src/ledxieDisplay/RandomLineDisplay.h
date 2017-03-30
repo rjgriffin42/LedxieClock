@@ -10,30 +10,25 @@
 #include <stdlib.h>
 #include "../ledTube/ledxieTubeV1/LedxieTubeV1.h"
 #include "../ledTube/LedTube.h"
+#include "LedDisplayArray.h"
 
 class RandomLineDisplay
 {
 public:
 	RandomLineDisplay(int numOfTubes, int pin);
 	void randomLine(int tShuffle, int tLast);
-	void randomLineAlt(int tShuffle, int tLast);
-	void randomLineAltAlt(int tShuffle, int tLast);
-	String getCurrent() const ;
+    void randomLineAlt(int tShuffle, int tLast);
+    void updateValues(int values[]);
 
 private:
 	//variables
 	int tubeNum;
-	Adafruit_NeoPixel pixels;
-	LedTube* tubes;
+	LedDisplayArray *ledDisplay;
 
-	LedDisplayArray ledDisplay;
-
-	int brightness[];
-	int value[];
+	int (*value);
 
 	//functions
-	void updateTubes();
-	void updateTubes(int brightness[], int value[]);
+	void updateTubes(int brightness, int value[]);
 };
 
 

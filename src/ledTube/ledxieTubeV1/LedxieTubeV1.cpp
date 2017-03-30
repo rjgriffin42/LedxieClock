@@ -9,6 +9,9 @@
 
 LedxieTubeV1::LedxieTubeV1()
 {
+	ring_position = 0;
+	currentValue = 0;
+	previousValue = 0;
 }
 
 LedxieTubeV1::~LedxieTubeV1()
@@ -27,7 +30,7 @@ void LedxieTubeV1::setLEDStrip(Adafruit_NeoPixel& led_strip)
 
 void LedxieTubeV1::setDisplayBrightness(int brightness)
 {
-	this->brightness = brightness;
+	//this->brightness = brightness;
 }
 
 void LedxieTubeV1::setColorToDisplay(int color[3])
@@ -61,7 +64,12 @@ int LedxieTubeV1::getNumberToDisplay()
 
 int LedxieTubeV1::getNumberOfLEDs()
 {
-	return NUM_LEDS;
+	return 11;
+}
+
+int LedxieTubeV1::getPixelToTurnOn()
+{
+	return LED[currentValue] + (NUM_LEDS * 0);
 }
 
 void LedxieTubeV1::turnOff()
@@ -89,10 +97,8 @@ void LedxieTubeV1::turnOffOldNumber()
 void LedxieTubeV1::update()
 {
 	led_strip->setBrightness(brightness);
-	led_strip->show();
 
 	turnOnNewNumber();
-	led_strip->show();
 
 	turnOffOldNumber();
 	led_strip->show();

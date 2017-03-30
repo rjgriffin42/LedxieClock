@@ -35,6 +35,7 @@
 								<option id="it.baeyens.arduino.compiler.asm.sketch.option.incpath.1026740486" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.asm.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Ledxie/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="/Users/shadylady/Downloads/avr-stl/include"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.S.sketch.input.1123811083" name="Assembly source files" superClass="it.baeyens.arduino.compiler.S.sketch.input"/>
 							</tool>

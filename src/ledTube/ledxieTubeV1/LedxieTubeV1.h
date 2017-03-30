@@ -26,6 +26,7 @@ public:
 
 	int getNumberToDisplay();
 	int getNumberOfLEDs();
+	int getPixelToTurnOn();
 
 	void setTubeRingPosition(int ring_position);
 	void setLEDStrip(Adafruit_NeoPixel& led_strip);
@@ -33,6 +34,7 @@ public:
 	void turnOff();
 	void update();
 
+	int color[3] = {255, 55, 0};
 
 private:
 
@@ -44,7 +46,7 @@ private:
 	int currentValue;
 	int previousValue;
 
-	int color[3] = {255, 55, 0};
+
 	int brightness = 255;
 
 	void setCurrentValue(int value);
