@@ -1,4 +1,5 @@
 #include "NixieDisp.h"
+
 NixieDisp::NixieDisp(int numOfTubes, int pin)
 {
 	tubeNum = numOfTubes;

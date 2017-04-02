@@ -1,8 +1,11 @@
+#ifndef NIXIEDISP_H
+#define NIXIEDISP_H
+
 #include <Arduino.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "Adafruit_NeoPixel.h"
+#include "../adafruit_NeoPixel/Adafruit_NeoPixel.h"
 #include <string.h>
 #include <stdlib.h>
 #include "TimerOne.h"
@@ -14,11 +17,12 @@ struct TUBE
 };
 
 struct time
-	{
-		int hour;
-		int minute;
-		int second;
-	};
+{
+	int hour;
+	int minute;
+	int second;
+};
+
 class NixieDisp
 {
 public:
@@ -44,6 +48,7 @@ private:
 	void tubeOff(int tubeNum);
 	void updateTime();
 
-
-
 };
+
+
+#endif // NIXIEDISP_H
