@@ -2,6 +2,10 @@
 
 LedDisplayArray::LedDisplayArray(void)
 {
+	number_of_tubes = 0;
+	color = new int[0][3];
+
+	tubes = new LedxieTubeV1[0];
 }
 
 LedDisplayArray::LedDisplayArray(int numOfTubes, int pin)

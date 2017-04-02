@@ -23,7 +23,8 @@ private:
 	int brightness = 255;
 	int (*color)[3];
 	Adafruit_NeoPixel pixels;
-	LedxieTubeV1 (*tubes);
+	//LedxieTubeV1 *tubes;
+	LedTube *tubes;
 };
 
 
