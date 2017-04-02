@@ -1,5 +1,9 @@
 /build/
 .DS_Store
 .settings
-Release
+.cproject
+.project
 .checkstyle
+Release
+core
+libraries
